@@ -13,6 +13,7 @@ Source0:	http://icps.u-strasbg.fr/PolyLib/polylib_src/%{name}-%{version}.tar.gz
 # Source0-md5:	c0088786e0a5ae64b7cc47ad19ae4f83
 URL:		http://icps.u-strasbg.fr/PolyLib/
 BuildRequires:	gmp-devel >= 2.0.2
+Requires:	gmp >= 2.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,6 +33,7 @@ Summary:	Header files for PolyLib library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki PolyLib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	gmp-devel >= 2.0.2
 
 %description devel
 Header files for PolyLib library.
@@ -66,15 +68,6 @@ Dokumentacja API biblioteki PolyLib.
 %setup -q
 
 %build
-# if ac/am/lt/* rebuilding is necessary, do it in this order and add
-# appropriate BuildRequires
-#%{__libtoolize}
-#%{__aclocal}
-#%{__autoconf}
-#%{__autoheader}
-#%{__automake}
-# int + longlongint libs give us 32-bit and 64-bit libraries on ILP32 and LP64 platforms
-# there is no way (no suitable int type) to get 128-bit library on ILP32/LP64
 %configure \
 	--enable-int-lib \
 	--enable-longlongint-lib \
