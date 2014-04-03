@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
-#
+
 Summary:	Polyhedral Library
 Summary(pl.UTF-8):	Biblioteka operacji na wielościanach
 Name:		polylib
 Version:	5.22.5
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://icps.u-strasbg.fr/PolyLib/polylib_src/%{name}-%{version}.tar.gz
@@ -57,6 +57,9 @@ Statyczna biblioteka PolyLib.
 Summary:	PolyLib API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki PolyLib
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for PolyLib library.
@@ -76,7 +79,6 @@ Dokumentacja API biblioteki PolyLib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -88,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/Changes 
+%doc doc/Changes
 %attr(755,root,root) %{_bindir}/c2p
 %attr(755,root,root) %{_bindir}/disjoint_union_adj
 %attr(755,root,root) %{_bindir}/disjoint_union_sep
