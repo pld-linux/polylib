@@ -6,7 +6,7 @@ Summary:	Polyhedral Library
 Summary(pl.UTF-8):	Biblioteka operacji na wielościanach
 Name:		polylib
 Version:	5.22.5
-Release:	2
+Release:	3
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://icps.u-strasbg.fr/PolyLib/polylib_src/%{name}-%{version}.tar.gz
